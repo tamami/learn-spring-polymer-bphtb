@@ -1,0 +1,48 @@
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="scripts/moment-js.html">
+
+<dom-module id="stats-panel">
+    <template>
+        <style>
+            :host {
+                display: flex;
+                flex-direction: column;
+                background: var(--light-primary-color};
+            }
+
+            .logout {
+                color: #80cbc4;
+                font-weight: 300;
+            }
+
+            .toolbar {
+                display: flex;
+                flex-direction: row-reverse;
+                border: none;
+            }
+
+            .container {
+                flex: 1;
+            }
+        </style>
+
+        <paper-toolbar class="toolbar">
+            <paper-button on-tap="_logout" class="logout">Logout</paper-button>
+        </paper-toolbar>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'stats-panel',
+
+            properties: {
+
+            },
+
+            _logout: function() {
+                this.fire('logout');
+            }
+        });
+    </script>
+</dom-module>
