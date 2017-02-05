@@ -1,5 +1,7 @@
 <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
 <link rel="import" href="scripts/moment-js.html">
 
 <dom-module id="stats-panel">
@@ -30,6 +32,10 @@
         <paper-toolbar class="toolbar">
             <paper-button on-tap="_logout" class="logout">Logout</paper-button>
         </paper-toolbar>
+
+        <paper-menu>
+            <paper-item on-tap="_changeWin">Entry SSPD</paper-item>
+        </paper-menu>
     </template>
 
     <script>
@@ -42,6 +48,10 @@
 
             _logout: function() {
                 this.fire('logout');
+            },
+
+            _changeWin: function() {
+                this.fire('change-win');
             }
         });
     </script>

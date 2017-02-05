@@ -7,6 +7,7 @@
 <link rel="import" href="bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="stats-panel.html">
+<link rel="import" href="entry-sspd-page.html">
 
 <dom-module id="bphtb-page">
     <template>
@@ -33,13 +34,18 @@
 
             <paper-header-panel main>
                 <paper-toolbar class="toolbar">
-                    <h1>BPHTB Menu</h1>
+                    <h1>Aplikasi BPHTB</h1>
                     <span class="flex"></span>
                 </paper-toolbar>
             </paper-header-panel>
         </paper-drawer-panel>
 
+        <!--
+        <entry-sspd id="entry-sspd-form" token="{{token}}"></entry-sspd>
+        -->
         <paper-toast id="toast"></paper-toast>
+
+        <div id="main"></div>
     </template>
 
     <script>
@@ -56,7 +62,11 @@
             behaviors: [Polymer.NeonAnimatableBehavior],
 
             listeners: {
+                'change-win': '_changeWin'
+            },
 
+            _changeWin: function() {
+                document.getElementById("main").innerHTML = "<entry-sspd token=\"{{token}}\"></entry-sspd>";
             }
         });
     </script>

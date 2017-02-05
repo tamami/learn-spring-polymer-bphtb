@@ -1,0 +1,35 @@
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+
+<dom-module id="entry-sspd">
+    <template>
+        <style>
+            :host {
+                display: flex;
+            }
+        </style>
+
+        <paper-card>
+            <div class="card-content">
+                Selamat datang di entry data SSPD
+            </div>
+            <div class="card-actions">
+                <paper-button>Simpan</paper-button>
+                <paper-button>Batal</paper-button>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'entry-sspd',
+
+            properties: {
+                token: {
+                    type: String,
+                    notify: true
+                }
+            }
+        });
+    </script>
+</dom-module>
