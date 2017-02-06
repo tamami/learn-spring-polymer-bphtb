@@ -45,7 +45,9 @@
         -->
         <paper-toast id="toast"></paper-toast>
 
-        <div id="main"></div>
+        <div id="main" hidden$="{{hideRefKelurahan}}">
+            <h1>List RefKelurahan muncul</h1>
+        </div>
     </template>
 
     <script>
@@ -56,17 +58,26 @@
                 token: {
                     type: String,
                     notify: true
+                },
+                hideRefKelurahan: {
+                    type: Boolean,
+                    value: true
                 }
             },
 
             behaviors: [Polymer.NeonAnimatableBehavior],
 
             listeners: {
-                'change-win': '_changeWin'
+                'change-win': '_changeWin',
+                'show-ref-kelurahan': '_showRefKelurahan'
             },
 
             _changeWin: function() {
                 document.getElementById("main").innerHTML = "<entry-sspd token=\"{{token}}\"></entry-sspd>";
+            },
+
+            _showRefKelurahan: function() {
+                this.hideRefKelurahan = !this.hideRefKelurahan;
             }
         });
     </script>

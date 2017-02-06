@@ -1,6 +1,7 @@
 <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="bower_components/paper-menu/paper-submenu.html">
 <link rel="import" href="bower_components/paper-item/paper-item.html">
 <link rel="import" href="scripts/moment-js.html">
 
@@ -35,6 +36,12 @@
 
         <paper-menu>
             <paper-item on-tap="_changeWin">Entry SSPD</paper-item>
+            <paper-sub-menu>
+                <paper-item class="menu-trigger">Referensi</paper-item>
+                <paper-menu class="menu-content">
+                    <paper-item on-tap="_showRefKelurahan">Referensi Kelurahan</paper-item>
+                </paper-menu>
+            </paper-sub-menu>
         </paper-menu>
     </template>
 
@@ -52,6 +59,10 @@
 
             _changeWin: function() {
                 this.fire('change-win');
+            },
+
+            _showRefKelurahan: function() {
+                this.fire('show-ref-kelurahan');
             }
         });
     </script>
