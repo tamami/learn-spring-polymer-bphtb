@@ -37,17 +37,20 @@
                     <h1>Aplikasi BPHTB</h1>
                     <span class="flex"></span>
                 </paper-toolbar>
+
+                <div id="main" hidden$="{{hideRefKelurahan}}">
+                    <h1>List RefKelurahan muncul</h1>
+                </div>
             </paper-header-panel>
         </paper-drawer-panel>
+
 
         <!--
         <entry-sspd id="entry-sspd-form" token="{{token}}"></entry-sspd>
         -->
         <paper-toast id="toast"></paper-toast>
 
-        <div id="main" hidden$="{{hideRefKelurahan}}">
-            <h1>List RefKelurahan muncul</h1>
-        </div>
+
     </template>
 
     <script>
@@ -73,7 +76,7 @@
             },
 
             _changeWin: function() {
-                document.getElementById("main").innerHTML = "<entry-sspd token=\"{{token}}\"></entry-sspd>";
+                //document.getElementById("main").innerHTML = "<entry-sspd token=\"{{token}}\"></entry-sspd>";
             },
 
             _showRefKelurahan: function() {

@@ -1,0 +1,93 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-form/iron-form.html">
+<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+
+<dom-module id="ref-kelurahan-editor">
+    <template>
+        <style>
+            #dialog {
+                display: block;
+                padding: 16px 32px 64px 32px;
+                border: 1px solid #ccc;
+                position: absolute;
+                top: 0;
+                margin: 0;
+                width: 80vw;
+                background: var(--primary-background-color);
+                overflow-y: scroll;
+            }
+
+            .main-layout {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .flex {
+                flex: 1;
+            }
+
+            .form {
+                flex: 2;
+            }
+
+            .buttons-layout {
+                display: flex;
+                flex-direction: row;
+                margin-top: 16px;
+            }
+
+            .buttons-layout paper-button {
+                width: 150px;
+            }
+
+            .save-button {
+                background: var(--accent-color);
+                color: var(--text-primary-color);
+            }
+
+            .cancel-button {
+                color: var(--accent-color);
+            }
+
+            h2 {
+                font-size: 2em;
+                font-weight: 300;
+            }
+
+            paper-button[hidden] {
+                display: none;
+            }
+
+            .error_message {
+                margin-top: 20px;
+                color: #db4437;
+            }
+
+            .close-button {
+                color: var(--accent-color};
+            }
+
+            form::content label {
+                font-weight: bold !important;
+                color: #999 !important;
+            }
+
+            @media (max-width: 600px) {
+                #dialog {
+                    width: 100vw;
+                    min-height: 100vh;
+                    padding: 0 0 60px 0;
+                }
+            }
+        </style>
+
+        <paper-dialog id="dialog" modal>
+            <div class="main-layout">
+                <h2>Form Ref Kelurahan</h2>
+                <span class="flex"></span>
+                <paper-icon-button icon="close" on-tap="close"
+                                   class="close-button self-start"></paper-icon-button>
+            </div>
+        </paper-dialog>
+    </template>
+</dom-module>
