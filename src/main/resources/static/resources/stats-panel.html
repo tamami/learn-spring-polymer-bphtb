@@ -23,6 +23,7 @@
                 display: flex;
                 flex-direction: row-reverse;
                 border: none;
+                flex: 1;
             }
 
             .container {
@@ -31,17 +32,19 @@
         </style>
 
         <paper-toolbar class="toolbar">
-            <paper-button on-tap="_logout" class="logout">Logout</paper-button>
+            <paper-button on-tap="_logout" class="logout">
+                Logout
+            </paper-button>
         </paper-toolbar>
 
-        <paper-menu>
+         <paper-menu>
             <paper-item on-tap="_changeWin">Entry SSPD</paper-item>
-            <paper-sub-menu>
+            <paper-submenu>
                 <paper-item class="menu-trigger">Referensi</paper-item>
                 <paper-menu class="menu-content">
                     <paper-item on-tap="_showRefKelurahan">Referensi Kelurahan</paper-item>
                 </paper-menu>
-            </paper-sub-menu>
+            </paper-submenu>
         </paper-menu>
     </template>
 

@@ -2,3 +2,112 @@
 <link rel="import" href="bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="token-ajax.html">
 <link rel="import" href="ref-kelurahan-editor.html">
+<dom-module id="daftar-ref-kelurahan">
+    <template>
+        <style>
+            :host {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                border-right: 1px solid #ddd;
+            }
+
+            .filters {
+                box-sizing: border-box;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #ref-kelurahan::content thead:vaadin-grid-header th {
+                background: var(--dark-primary-color);
+                color: #ccc;
+                font-size: 1.2em;
+                font-weight: 400;
+            }
+
+            #ref-kelurahan::content thead.vaadin-grid-header th.last-frozen {
+                border-right: 1px solid #2a3a42;
+            }
+
+            .filters paper-input {
+                width: 80%;
+            }
+
+            #ref-kelurahan {
+                flex: 1;
+                font-weight: 300;
+            }
+
+            .add-button {
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+            }
+        </style>
+
+        <vaadin-grid id="ref-kelurahan" items="{{ref_kelurahan}}" frozen-columns="1"
+                     on-selected-items-changed="_editRefKelurahan">
+            <table>
+                <colgroup>
+                    <col name="kd_propinsi" sortable width="50">
+                    <col name="kd_dati2" sortable width="50">
+                    <col name="kd_kecamatan" sortable width="50">
+                    <col name="kd_kelurahan" sortable width="50">
+                    <col name="kd_sektor" sortable width="50">
+                    <col name="nm_kelurahan" sortable width="150">
+                    <col name="no_kelurahan" sortable width="50">
+                    <col name="kd_pos_kelurahan" sortable width="100">
+                </colgroup>
+            </table>
+        </vaadin-grid>
+
+        <paper-fab icon="add" on-tap="_addRefKelurahan" class="add-button"></paper-fab>
+    </template>
+    <script>
+        Polymer({
+            is: 'daftar-ref-kelurahan',
+
+            properties: {
+                ref_kelurahan: Array
+            },
+
+            ready: function() {
+                var grid: this.$.ref_kelurahan;
+
+                grid.addEventListener('sort-order-changed', function() {
+                    var sortProperty = grid.columns[grid.sortOrder[0].column]name;
+                    var sortDirection = grid.sortOrder[0].direction;
+
+                    grid.items.sort(function(a, b) {
+                        var res;
+                        if(!isNaN(a[sortProperty])) {
+                            res = parseInt(a[sortProperty], 10) - parseInt(b[sortProperty], 10);
+                        } else {
+                            res = a[sortProperty].localeCompare(b[sortProperty]);
+                        }
+
+                        if('desc' === sortDirection) {
+                            res *= -1;
+                        }
+                        return res;
+                    });
+                });
+
+                grid.then(function() {
+                    grid.columns[2].rendered = function(cell) {
+                        cell.element.textContent = "$" + cell.data.toFixed(2);
+                    };
+
+                    grid.columns[3].rendered = function(cell) {
+                        var status = cell.data.replace(/_/g, '');
+                        status = status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
+                        cell.element.textContent = status;
+                    };
+                });
+            }
+        });
+    </script>
+</dom-module>
